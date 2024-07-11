@@ -1,0 +1,191 @@
+syntax = "proto3";
+
+option go_package = "compiled/proto/v1";
+
+service Peripherals {
+  rpc BulkData(BulkRequest) returns (BulkResponse) {}
+  rpc SetVoaVoltage(VoaVoltageRequest) returns (VoaVoltageResponse) {}
+  rpc SetHeater(HeaterRequest) returns (HeaterResponse) {}
+  rpc SetFans(FansRequest) returns (FansResponse) {}
+  rpc SetBeacon(BeaconRequest) returns (BeaconResponse) {}
+  rpc SetData(SetDataRequest) returns (SetDataResponse) {}
+  rpc GetMode(EmptyMessage) returns (GetModeResponse) {}
+  rpc SetNuphotonSerial(NuphotonSerialRequest) returns (NuphotonSerialResponse) {}
+  rpc SetIndicatorRGBLeds(IndicatorRGBLedsRequest) returns (IndicatorRGBLedsResponse) {}
+  rpc SetBacklightLeds(BacklightLedsRequest) returns (BacklightLedsResponse) {}
+  rpc SetLCD(LCDRequest) returns (LCDResponse) {}
+}
+
+message EmptyMessage {
+
+}
+
+message BulkRequest {
+
+}
+
+message BulkResponse {
+  optional float temperature_leu_nuphoton = 1;
+  optional float temperature_leu_whle = 2;
+  optional float temperature_leu_powerconv = 3;
+  optional float temperature_odu_rx_lens = 4;
+  optional float temperature_odu_board = 5;
+  optional float temperature_odu_main = 6;
+  optional float humidity_leu = 7;
+  optional float humidity_odu = 8;
+  optional bool status_heater_leu = 9;
+  optional bool status_heater_odu_lens = 10;
+  optional bool status_heater_odu_fsm = 11;
+  optional bool status_heater_odu_main = 12;
+  optional bool status_fans_leu = 13;
+  optional double reading_diagnostic_detector_odu = 14;
+  optional double reading_quad_cell_ul_odu = 15;
+  optional double reading_quad_cell_ur_odu = 16;
+  optional double reading_quad_cell_ll_odu = 17;
+  optional double reading_quad_cell_lr_odu = 18;
+  optional double reading_quad_cell_sum_odu = 19;
+  optional double reading_fsm_pos_x_rx_odu = 20;
+  optional double reading_fsm_pos_y_rx_odu = 21;
+  optional double reading_fsm_pos_x_tx_odu = 22;
+  optional double reading_fsm_pos_y_tx_odu = 23;
+  optional double reading_fsm_err_x_rx_odu = 24;
+  optional double reading_fsm_err_y_rx_odu = 25;
+  optional double reading_fsm_err_x_tx_odu = 26;
+  optional double reading_fsm_err_y_tx_odu = 27;
+  optional double reading_voa_resistance_leu = 28;
+  optional double reading_current_sensor_leu = 29;
+  optional bool beacon_odu = 30;
+}
+
+message VoaVoltageRequest { 
+  double new_voltage = 1; 
+}
+
+message VoaVoltageResponse {
+
+}
+
+message HeaterRequest {
+  optional bool heater_leu = 1;
+  optional bool heater_odu_lens = 2;
+  optional bool heater_odu_fsm = 3;
+  optional bool heater_odu_main = 4;
+}
+
+message HeaterResponse {
+
+}
+
+message FansRequest {
+  bool state = 1;
+}
+
+message FansResponse {
+
+}
+
+message BeaconRequest { 
+  bool status = 1; 
+}
+
+message BeaconResponse {
+
+}
+
+message SetDataRequest {
+  optional float temperature_leu_nuphoton = 1;
+  optional float temperature_leu_whle = 2;
+  optional float temperature_leu_powerconv = 3;
+  optional float temperature_odu_rx_lens = 4;
+  optional float temperature_odu_board = 5;
+  optional float temperature_odu_main = 6;
+  optional float humidity_leu = 7;
+  optional float humidity_odu = 8;
+  optional bool status_heater_leu = 9;
+  optional bool status_heater_odu_lens = 10;
+  optional bool status_heater_odu_fsm = 11;
+  optional bool status_heater_odu_main = 12;
+  optional bool status_fans_leu = 13;
+  optional double reading_diagnostic_detector_odu = 14;
+  optional double reading_quad_cell_ul_odu = 15;
+  optional double reading_quad_cell_ur_odu = 16;
+  optional double reading_quad_cell_ll_odu = 17;
+  optional double reading_quad_cell_lr_odu = 18;
+  optional double reading_quad_cell_sum_odu = 19;
+  optional double reading_fsm_pos_x_rx_odu = 20;
+  optional double reading_fsm_pos_y_rx_odu = 21;
+  optional double reading_fsm_pos_x_tx_odu = 22;
+  optional double reading_fsm_pos_y_tx_odu = 23;
+  optional double reading_fsm_err_x_rx_odu = 24;
+  optional double reading_fsm_err_y_rx_odu = 25;
+  optional double reading_fsm_err_x_tx_odu = 26;
+  optional double reading_fsm_err_y_tx_odu = 27;
+  optional double reading_voa_resistance_leu = 28;
+  optional double reading_current_sensor_leu = 29;
+  optional bool beacon_odu = 30;
+}
+
+message SetDataResponse {
+
+}
+
+enum Mode {
+  ODU = 0;
+  LEU = 1;
+}
+
+message GetModeResponse {
+  Mode mode = 1;
+}
+
+message NuphotonSerialRequest {
+  enum NuphotonSerialRequestCommand {
+    FLASH = 0;
+    FLINE = 1;
+    EDFA_POWER_ON = 2;
+    EDFA_POWER_OFF = 3;
+    PWR_ON = 4;
+    PWR_OFF = 5;
+    AOPC = 6;
+    SAOPC = 7;
+    GAOPC = 8;
+    DIAG = 9;
+    GALARM = 10;
+    RESET = 11;
+  }
+  NuphotonSerialRequestCommand command = 1;
+  optional double output_power = 2;
+}
+
+message NuphotonSerialResponse {
+  string response = 1;
+}
+
+message IndicatorRGBLedsRequest {
+  int32 led_index = 1;
+  int32 red = 2;
+  int32 green = 3;
+  int32 blue = 4;
+}
+
+message IndicatorRGBLedsResponse {
+
+}
+
+message BacklightLedsRequest { 
+  int32 red = 1;
+  int32 green = 2;
+  int32 blue = 3;
+}
+
+message BacklightLedsResponse { 
+
+}
+
+message LCDRequest {
+  bytes message = 1;
+}
+
+message LCDResponse {
+
+}
