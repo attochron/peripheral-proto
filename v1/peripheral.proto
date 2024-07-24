@@ -3,7 +3,7 @@ syntax = "proto3";
 option go_package = "compiled/proto/v1";
 
 service Peripherals {
-  rpc BulkData(BulkRequest) returns (BulkResponse) {}
+  rpc BulkData(BulkRequest) returns (stream BulkResponse) {}
   rpc SetVoaVoltage(VoaVoltageRequest) returns (VoaVoltageResponse) {}
   rpc SetHeater(HeaterRequest) returns (HeaterResponse) {}
   rpc SetFans(FansRequest) returns (FansResponse) {}
@@ -58,7 +58,7 @@ message BulkResponse {
 }
 
 message VoaVoltageRequest { 
-  double new_voltage = 1; 
+  optional double new_voltage = 1; 
 }
 
 message VoaVoltageResponse {
@@ -66,22 +66,19 @@ message VoaVoltageResponse {
 }
 
 message HeaterRequest {
-  optional bool heater_leu = 1;
-  optional bool heater_odu_lens = 2;
-  optional bool heater_odu_fsm = 3;
-  optional bool heater_odu_main = 4;
+  optional bool heater = 1;
 }
 
 message HeaterResponse {
-
+  optional bool heater = 1;
 }
 
 message FansRequest {
-  bool state = 1;
+  optional bool state = 1;
 }
 
 message FansResponse {
-
+  optional bool state = 1;
 }
 
 message BeaconRequest { 
@@ -161,31 +158,39 @@ message NuphotonSerialResponse {
   string response = 1;
 }
 
-message IndicatorRGBLedsRequest {
-  int32 led_index = 1;
-  int32 red = 2;
-  int32 green = 3;
-  int32 blue = 4;
+message indicatorRGBLed {
+   int32 led_index = 1;
+   int32 red = 2;
+   int32 green = 3;
+   int32 blue = 4;
 }
 
-message IndicatorRGBLedsResponse {
-
-}
-
-message BacklightLedsRequest { 
+message backlightLed {
   int32 red = 1;
   int32 green = 2;
   int32 blue = 3;
 }
 
-message BacklightLedsResponse { 
+message IndicatorRGBLedsRequest {
+  optional indicatorRGBLed led = 1;
+}
 
+message IndicatorRGBLedsResponse {
+  optional repeated indicatorRGBLed leds = 1;
+}
+
+message BacklightLedsRequest { 
+  optional backlightLed bled = 1;
+}
+
+message BacklightLedsResponse { 
+  optional backlightLed bled = 1;
 }
 
 message LCDRequest {
-  bytes message = 1;
+  optional bytes message = 1;
 }
 
 message LCDResponse {
-
+  optional bytes current_message = 1;
 }
