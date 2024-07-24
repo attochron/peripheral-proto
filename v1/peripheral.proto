@@ -176,7 +176,7 @@ message IndicatorRGBLedsRequest {
 }
 
 message IndicatorRGBLedsResponse {
-  optional repeated indicatorRGBLed leds = 1;
+  repeated indicatorRGBLed leds = 1;
 }
 
 message BacklightLedsRequest { 
