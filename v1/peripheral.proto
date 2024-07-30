@@ -188,9 +188,9 @@ message BacklightLedsResponse {
 }
 
 message LCDRequest {
-  optional bytes message = 1;
+  optional string message = 1;
 }
 
 message LCDResponse {
-  optional bytes current_message = 1;
+  optional string current_message = 1;
 }
