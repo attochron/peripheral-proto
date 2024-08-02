@@ -55,14 +55,14 @@ message BulkResponse {
   optional double reading_voa_resistance_leu = 28;
   optional double reading_current_sensor_leu = 29;
   optional bool beacon_odu = 30;
-  optional double reading_adc_pin1_leu = 31;
-  optional double reading_adc_pin2_leu = 32;
-  optional double reading_adc_pin3_leu = 33;
-  optional double reading_adc_pin4_leu = 34;
-  optional double reading_adc_pin1_odu = 35;
-  optional double reading_adc_pin2_odu = 36;
-  optional double reading_adc_pin3_odu = 37;
-  optional double reading_adc_pin4_odu = 38;
+  optional double reading_adc_pin0_leu = 31;
+  optional double reading_adc_pin1_leu = 32;
+  optional double reading_adc_pin2_leu = 33;
+  optional double reading_adc_pin3_leu = 34;
+  optional double reading_adc_pin0_odu = 35;
+  optional double reading_adc_pin1_odu = 36;
+  optional double reading_adc_pin2_odu = 37;
+  optional double reading_adc_pin3_odu = 38;
 }
 
 message VoaVoltageRequest { 
@@ -128,14 +128,14 @@ message SetDataRequest {
   optional double reading_voa_resistance_leu = 28;
   optional double reading_current_sensor_leu = 29;
   optional bool beacon_odu = 30;
-  optional double reading_adc_pin1_leu = 31;
-  optional double reading_adc_pin2_leu = 32;
-  optional double reading_adc_pin3_leu = 33;
-  optional double reading_adc_pin4_leu = 34;
-  optional double reading_adc_pin1_odu = 35;
-  optional double reading_adc_pin2_odu = 36;
-  optional double reading_adc_pin3_odu = 37;
-  optional double reading_adc_pin4_odu = 38;
+  optional double reading_adc_pin0_leu = 31;
+  optional double reading_adc_pin1_leu = 32;
+  optional double reading_adc_pin2_leu = 33;
+  optional double reading_adc_pin3_leu = 34;
+  optional double reading_adc_pin0_odu = 35;
+  optional double reading_adc_pin1_odu = 36;
+  optional double reading_adc_pin2_odu = 37;
+  optional double reading_adc_pin3_odu = 38;
 }
 
 message SetDataResponse {
